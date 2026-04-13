@@ -12,8 +12,6 @@ def guardar_archivo():
         with open(nombre, "w") as archivo:
             archivo.write(contenido)
         messagebox.showinfo("Éxito", "Archivo guardado correctamente")
-    except Exception:
-        messagebox.showerror("Error", "No se pudo guardar el archivo")
 
 def abrir_archivo():
     nombre = entrada_nombre.get()
@@ -24,8 +22,6 @@ def abrir_archivo():
             cuadro_texto.insert(tk.END, contenido)
     except FileNotFoundError:
         messagebox.showerror("Error", "El archivo no existe")
-    except Exception:
-        messagebox.showerror("Error", "No se pudo abrir el archivo")
 
 def agregar_texto():
     nombre = entrada_nombre.get()
@@ -34,8 +30,7 @@ def agregar_texto():
         with open(nombre, "a") as archivo:
             archivo.write(contenido)
         messagebox.showinfo("Éxito", "Texto agregado correctamente")
-    except Exception:
-        messagebox.showerror("Error", "No se pudo agregar el texto")
+
 
 def limpiar_texto():
     cuadro_texto.delete("1.0", tk.END)
@@ -55,8 +50,6 @@ tk.Label(ventana, text="Nombre del archivo:").grid(row=0, column=0, padx=10, pad
 entrada_nombre = tk.Entry(ventana, width=30)
 entrada_nombre.grid(row=0, column=1, padx=10, pady=10)
 
-# Cuadro de texto
-# El columnspan=3 es para que el cuadro ocupe el ancho de las columnas de abajo
 cuadro_texto = tk.Text(ventana, width=60, height=15)
 cuadro_texto.grid(row=1, column=0, columnspan=3, padx=10, pady=10)
 
@@ -74,7 +67,7 @@ btn_abrir.grid(row=2, column=1)
 btn_agregar = tk.Button(ventana, text="Agregar", width=12, command=agregar_texto)
 btn_agregar.grid(row=3, column=0)
 
-# Botón Limpiar
+
 btn_limpiar = tk.Button(ventana, text="Limpiar", width=12, command=limpiar_texto)
 btn_limpiar.grid(row=3, column=1)
 
